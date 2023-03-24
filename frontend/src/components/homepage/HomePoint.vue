@@ -37,13 +37,13 @@ export default {
     }
   },
   mounted() {
-    document.addEventListener('mousemove', function (e) {
-      var x = e.clientX;
-      var y = e.clientY;
-      var chateau = document.getElementById('chateau');
+   /* document.addEventListener('mousemove', function (e) {
+     // var x = e.clientX;
+     // var y = e.clientY;
+      //var chateau = document.getElementById('chateau');
 
-      chateau.style.transform = 'translate(' + x / 100 + 'px, ' + y / 100 + 'px)';
-    })
+     // chateau.style.transform = 'translate(' + x / 100 + 'px, ' + y / 100 + 'px)';
+    })*/
   }
 }
 </script>
