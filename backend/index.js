@@ -4,10 +4,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 
-
-
-
-
 require('./utils/importDB');
 
 
@@ -29,7 +25,7 @@ const swaggerUi = require('swagger-ui-express');
 
 //------- Limiter le nombre de requêtes
 const limiter = rateLimit({
-    max: 100,
+    max: 3000,
     windowMs: 60 * 60 * 1000,
     message: 'Too many requests from this IP, please try again in an hour.'
 });
