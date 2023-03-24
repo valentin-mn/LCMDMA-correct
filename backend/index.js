@@ -2,6 +2,9 @@ const express = require('express');
 const helmet = require("helmet");
 const bodyParser = require('body-parser');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
+
+
 
 
 
@@ -24,12 +27,20 @@ const ServicesRoutes = require('./src/routers/services.router');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+//------- Limiter le nombre de requêtes
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: 'Too many requests from this IP, please try again in an hour.'
+});
+
 
 //--------Application
 
 //Création de l'application
 const app = express();
 app.use(helmet());
+app.use(limiter)
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json({limit: '50mb'}));
