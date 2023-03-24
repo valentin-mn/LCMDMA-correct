@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require("helmet");
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -28,6 +29,7 @@ const swaggerUi = require('swagger-ui-express');
 
 //Création de l'application
 const app = express();
+app.use(helmet());
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json({limit: '50mb'}));
