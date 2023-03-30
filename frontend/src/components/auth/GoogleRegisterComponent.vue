@@ -27,8 +27,8 @@ export default {
           this.$store.dispatch('registerUser', {
             login: data.alias,
             email: data.email,
-            firstName: data.name.split(' ')[0],
-            lastName: data.name.split(' ')[1],
+            firstName: data.name.length > 1 ? data.name.split(' ')[0] : data.name,
+            lastName: data.name.length > 1 ? data.name.split(' ')[1] : 'Google',
             password: 'mot_de_passe' // Remplacer par le mot de passe de votre choix
           }).then(response => {
             if (response.error) {
