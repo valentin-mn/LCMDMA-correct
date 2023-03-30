@@ -2,16 +2,18 @@
   <v-app>
     <NavBar style="z-index: 100"/>
     <router-view/>
+    <ChatComponent/>
   </v-app>
 </template>
 
 <script>
 
 import NavBar from "@/components/NavBar.vue";
+import ChatComponent from "@/components/ChatComponent.vue";
 
 export default {
   name: 'App',
-  components: {NavBar},
+  components: {ChatComponent, NavBar},
 
   data: () => ({
     //

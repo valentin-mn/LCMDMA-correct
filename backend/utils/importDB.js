@@ -13,6 +13,7 @@ const TypeActivite = require('../src/models/typeActivite.model');
 const User = require('../src/models/user.model');
 const LivreDOr = require('../src/models/livre-d-or.model');
 const Services = require('../src/models/services.model');
+const Message = require('../src/models/message.model');
 
 // One-to-Many Join
 
@@ -25,6 +26,9 @@ Achat.belongsTo(User, {foreignKey: 'userId'});
 
 LivreDOr.belongsTo(User, {foreignKey: 'posterId'});
 LivreDOr.belongsTo(InfoPrestataire, {foreignKey: 'receiverSiret'});
+
+User.hasMany(Message, {foreignKey: 'userId'});
+Message.belongsTo(User, {foreignKey: 'userId'});
 
 
 User.hasOne(InfoPrestataire, {foreignKey: 'userId'});

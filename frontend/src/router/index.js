@@ -101,4 +101,6 @@ const router = new VueRouter({
   routes
 })
 
+//todo : ajouter les routesGuards
+
 export default router

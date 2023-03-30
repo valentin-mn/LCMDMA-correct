@@ -19,6 +19,10 @@ const TarifRoutes = require('./src/routers/tarif.router');
 const TypeActiviteRoutes = require('./src/routers/typeActivite.router');
 const LivreDOrRoutes = require('./src/routers/livre-d-or.router');
 const ServicesRoutes = require('./src/routers/services.router');
+const MessageRoutes = require('./src/routers/message.router');
+
+
+const MessageController = require('./src/controllers/message.controller');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -103,8 +107,49 @@ app.use('/api/tarifs', TarifRoutes);
 app.use('/api/typeActivites', TypeActiviteRoutes);
 app.use('/api/livre-d-or', LivreDOrRoutes);
 app.use('/api/services', ServicesRoutes);
+app.use('/api/messages', MessageRoutes);
+
+
+//ajout des socket d'envoie et de reception de message
+
+const http = require('http').createServer(app);
+const io = require('socket.io')(http, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
+
+
+
+//cors pour les sockets
+
+
+
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+    socket.on('message', (msg) => {
+        //ajoute le message a la base de donnée
+        MessageController.createMessageFromSocket(msg)
+            .then((message) => {
+                //envoie le message a tous les utilisateurs
+                io.emit('message', message);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+    });
+});
+
+
+
 
 //lancement de l'application
-app.listen(port,()=>{
+http.listen(port,()=>{
     console.log("http://localhost:"+port);
 });

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         user: null, tarifs: null, achats: null, prestataire: null, services: null, messages: null, billets: null,
-        billetScanned: null, activites: null, users: null
+        billetScanned: null, activites: null, users: null, chatMessages: null
     }, mutations: {
         setUser(state, user) {
             state.user = user
@@ -22,6 +22,7 @@ export default new Vuex.Store({
             state.billetScanned = null;
             state.activites = null;
             state.users = null;
+            state.chatMessages = null;
 
 
         }, setTarifs(state, tarifs) {
@@ -54,10 +55,30 @@ export default new Vuex.Store({
         setUsers(state, users) {
             state.users = users
         },
+        setChatMessages(state, chatMessages) {
+            state.chatMessages = chatMessages
+        },
+        addChatMessage(state, chatMessage) {
+            state.chatMessages.push(chatMessage)
+        },
         trashCommit() {
 
         }
     }, actions: {
+
+        fetchChatMessages({commit}) {
+            return fetch('http://localhost:3000/api/messages', {
+                method: 'GET', headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    commit('setChatMessages', response)
+                    })
+                .catch(error => console.error('Error:', error))
+        }
+        ,
         registerPrestataire({commit}, prestataire) {
             return fetch('http://localhost:3000/api/auth/register', {
 
