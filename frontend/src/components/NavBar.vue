@@ -188,7 +188,7 @@
         <router-link to="/" class="toolbar-item"><v-btn text> Accueil</v-btn></router-link>
         <router-link to="/carte" class="toolbar-item"><v-btn text> Carte</v-btn></router-link>
         <router-link to="/planning" class="toolbar-item"><v-btn text>Programme</v-btn></router-link>
-        <router-link to="/user/prestataires" class="toolbar-item"><v-btn text> xPrestataires</v-btn></router-link>
+        <router-link to="/user/prestataires" class="toolbar-item"><v-btn text> Prestataires</v-btn></router-link>
         <router-link to="/billeterie" class="toolbar-item"><v-btn text> Billetterie</v-btn></router-link>
 
         <v-menu offset-y v-if="$store.state.user.userRole == 3">

@@ -273,6 +273,10 @@
             <v-btn @click="reset">Annuler</v-btn>
           </div>
         </v-form>
+        <br>
+        <div id="inscriptionComponent">
+          <GithubLogin name="Github"></GithubLogin>
+        </div>
         <div>
           <br>
           Vous êtes déjà inscrit ? <router-link to="/login">Connectez-vous</router-link>
@@ -301,8 +305,12 @@
 </template>
 
 <script>
+import GithubLogin from './GithubRegisterComponent.vue'
 export default {
   name: "InscriptionComponent",
+  components: {
+    GithubLogin
+  },
   data() {
     return {
 

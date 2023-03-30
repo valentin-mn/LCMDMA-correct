@@ -201,6 +201,14 @@
           <v-btn :disabled="invalid" type="submit">Se connecter</v-btn>
           <v-btn @click="reset">Annuler</v-btn>
         </v-form>
+        <br>
+        <div id="connexionComponent">
+          <GithubLogin name="Github"></GithubLogin>
+        </div>
+        <br>
+        <div id="connexionComponent">
+          <GoogleLogin name="Google"></GoogleLogin>
+        </div>
         <div>
           <br>
           Vous n'êtes pas inscrit? <router-link to="/register">Inscrivez-vous</router-link>
@@ -229,8 +237,14 @@
 </template>
 
 <script>
+import GithubLogin from './GithubRegisterComponent.vue'
+import GoogleLogin from './GoogleRegisterComponent.vue'
 export default {
   name: "ConnexionComponent",
+  components: {
+    GithubLogin,
+    GoogleLogin
+  },
   data() {
     return {
       login: "",
