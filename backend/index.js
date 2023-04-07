@@ -5,7 +5,7 @@ const path = require('path');
 
 
 require('./utils/importDB');
-
+const cache = require('./utils/cache');
 
 //import des routes
 const UserRoutes = require('./src/routers/user.router');
@@ -46,6 +46,9 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+
+//Utilise le cache pour les routes
+app.use(cache(300));
 
 //logger des requêtes
 app.use((req, res, next) => {
