@@ -24,3 +24,9 @@ Les maquettes Figma sont disponibles à l'adresse suivante : https://www.figma.c
 #### bdd_files
 On y retrouve le MCD de la base de données sous forme de fichier Looping et PNG.
 On y retrouve aussi le script de création des tables (qui sont crées aussi lors du lancemement de l'API avec Sequelize) et un jeu de données pour tester l'API.
+
+
+
+### Pour le projet de Services Web
+
+> Lien du Readme : [lien readme](https://github.com/valentin-mn/LCMDMA-correct/blob/vulnerabilites/README_Projet_Services_Web.md) 
